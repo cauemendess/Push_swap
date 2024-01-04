@@ -2,16 +2,14 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/01/03 14:30:47 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/03 14:30:47 by csilva-m         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/04 17:52:28 by csilva-m          #+#    #+#             */
+/*   Updated: 2024/01/04 17:52:28 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/push_swap.h"
 
@@ -51,10 +49,12 @@ void	add_back(t_stack **stack, t_stack *stack_new)
     tail->next = stack_new;
 }
 
-void print_stack(t_stack *a)
+
+// Ignore essa função por enquanto...
+void print_stack(t_stack *stack_a)
 {
     t_stack *temp;
-    temp = a;
+    temp = stack_a;
     while(temp != NULL)
     {
         ft_printf("value: %d\n", temp->value);
@@ -62,21 +62,31 @@ void print_stack(t_stack *a)
     }
 }
 
+
 t_stack     *init_stack(int argc, char **argv)
 {
+    if(argc < 2)
+    {
+        ft_printf("Error");
+    }
 	int i = 1;
 	int el;
-	t_stack *a;
+	t_stack *stack_a;
+
+    if(argc == 2)
+    {
+        split_stack(stack_a);
+    }
 	while (i < argc)
 	{
 		el = ft_atoi(argv[i]);
         if(i == 1)
-            a = ft_stack_new(el);
+            stack_a = ft_stack_new(el);
         else
-		    add_back(&a, ft_stack_new(el));
+		    add_back(&stack_a, ft_stack_new(el));
 		i++;
 	}
-    return(a);
+    return(stack_a);
 }
 
 
@@ -96,13 +106,30 @@ bool is_ordened(t_stack *stack_a)
 }
 
 
+
+int get_stack_size(t_stack *stack)
+{
+    int res = 0;
+    t_stack *temp;
+    temp = stack;
+    while(temp != NULL)
+    {
+        temp = temp->next;
+        res++;
+    }
+    return(res);
+}
+
+
+
 int	main(int argc, char **argv)
 {
     t_stack *stack_a;
     t_stack *stack_b;
     stack_b = NULL;
 	stack_a = init_stack(argc, argv);
-    push(stack_a, stack_b);
     print_stack(stack_a);
+    
+    ft_printf("%d\n", get_stack_size(stack_a));
 
 }
