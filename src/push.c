@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:53:23 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/04 17:53:04 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:51:24 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,14 @@ void	push(t_stack **src, t_stack **dest)
 	*dest = top;
 }
 
-void move_top_to_stack_b(t_stack **stack_a, t_stack **stack_b) {
-    if (!stack_a || !stack_b || !*stack_a) {
-        return; // Verifica se as pilhas são válidas e não estão vazias
-    }
+void do_pa(t_stack **stack_a, t_stack **stack_b)
+{
+	push(stack_a, stack_b);
+	ft_printf("pa\n");
+}
 
-    // Remove o primeiro elemento da stack_a
-    t_stack *top = *stack_a;
-    *stack_a = top->next;
-    if (*stack_a) {
-        (*stack_a)->prev = NULL;
-    }
-
-    // Adiciona o elemento removido à stack_b
-    top->next = NULL;
-    top->prev = NULL;
-    add_back(stack_b, top);
+void do_pb(t_stack **stack_a, t_stack **stack_b)
+{
+	push(stack_b, stack_a);
+	ft_printf("pb\n");
 }

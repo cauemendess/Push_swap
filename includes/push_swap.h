@@ -12,6 +12,8 @@ typedef struct s_stack
 	struct s_stack *prev;
 } t_stack;
 
+
+
 void	add_back(t_stack **stack, t_stack *new);
 void	init_all(int argc, char **argv);
 void	push(t_stack **src, t_stack **dest);
