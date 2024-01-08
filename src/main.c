@@ -32,6 +32,7 @@ t_stack	*ft_stack_new(int content)
 		ft_printf("Erro");
 	node->value = content;
 	node->next = NULL;
+    node->prev = NULL;
 	return (node);
 }
 
@@ -47,6 +48,7 @@ void	add_back(t_stack **stack, t_stack *stack_new)
     }
     tail = get_stack_last(*stack);
     tail->next = stack_new;
+    stack_new->prev = tail;
 }
 
 
@@ -73,10 +75,6 @@ t_stack     *init_stack(int argc, char **argv)
 	int el;
 	t_stack *stack_a;
 
-    if(argc == 2)
-    {
-        split_stack(stack_a);
-    }
 	while (i < argc)
 	{
 		el = ft_atoi(argv[i]);
@@ -126,10 +124,44 @@ int	main(int argc, char **argv)
 {
     t_stack *stack_a;
     t_stack *stack_b;
+
     stack_b = NULL;
 	stack_a = init_stack(argc, argv);
+    ft_printf("Antes do push\n");
+    ft_printf("===================\n");
     print_stack(stack_a);
+    ft_printf("===================\n");
+    ft_printf("Depois do push\n");
+    ft_printf("===================\n");
     
-    ft_printf("%d\n", get_stack_size(stack_a));
+    push(&stack_a, &stack_b);
+    push(&stack_a, &stack_b);
+    push(&stack_a, &stack_b);
+
+    ft_printf("Stack a\n");
+    ft_printf("===================\n");
+    print_stack(stack_a);
+    ft_printf("===================\n");
+    ft_printf("Stack b\n");
+    ft_printf("===================\n");
+    print_stack(stack_b);
+
+    ft_printf("===================\n");
+    ft_printf("De volta pra stack a\n");
+    ft_printf("===================\n");
+    push(&stack_b, &stack_a);
+    push(&stack_b, &stack_a);
+    push(&stack_b, &stack_a);
+
+    ft_printf("Stack a\n");
+    ft_printf("===================\n");
+    print_stack(stack_a);
+    ft_printf("===================\n");
+    ft_printf("Stack b\n");
+    ft_printf("===================\n");
+    print_stack(stack_b);
+
+    
+    // ft_printf("%d\n", get_stack_size(stack_a));
 
 }

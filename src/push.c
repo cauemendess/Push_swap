@@ -13,13 +13,41 @@
 #include "../includes/push_swap.h"
 
 
-void	push(t_stack *stack_a, t_stack *stack_b)
+void	push(t_stack **src, t_stack **dest)
 {
-	t_stack *temp;
-	if(stack_a == NULL)
+	t_stack *top;
+	if(*src == NULL)
 		return;
-	temp = stack_a->next;
-	stack_a->next = stack_b;
-	stack_b = stack_a;
-	stack_a = temp;
+	top = *src;
+	*src = top->next;
+	if(*src)
+		(*src)->prev = NULL;
+	top->prev = NULL;
+	if(*dest == NULL)
+	{
+		*dest = top;
+		top->next = NULL;
+		return ;
+	}
+	top->next = *dest;
+	(*dest)->prev = top;
+	*dest = top;
+}
+
+void move_top_to_stack_b(t_stack **stack_a, t_stack **stack_b) {
+    if (!stack_a || !stack_b || !*stack_a) {
+        return; // Verifica se as pilhas são válidas e não estão vazias
+    }
+
+    // Remove o primeiro elemento da stack_a
+    t_stack *top = *stack_a;
+    *stack_a = top->next;
+    if (*stack_a) {
+        (*stack_a)->prev = NULL;
+    }
+
+    // Adiciona o elemento removido à stack_b
+    top->next = NULL;
+    top->prev = NULL;
+    add_back(stack_b, top);
 }

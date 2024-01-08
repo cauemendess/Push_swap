@@ -9,11 +9,12 @@ typedef struct s_stack
 {
 	int value;
 	struct s_stack *next;
+	struct s_stack *prev;
 } t_stack;
 
 void	add_back(t_stack **stack, t_stack *new);
 void	init_all(int argc, char **argv);
-void	push(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack **src, t_stack **dest);
 t_stack	*ft_stack_new(int content);
 
 #endif
