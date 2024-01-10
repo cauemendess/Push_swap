@@ -16,18 +16,23 @@ void swap(t_stack **stack)
 {
 	t_stack *first;
 	t_stack *second;
-	if(!*stack || (*stack)->next != NULL)
+	if(!*stack || !(*stack)->next)
 		return;
 	first = *stack;
 	second = (*stack)->next;
-	
+	if(second->next != NULL)
+		second->next->prev = first;
+	first->next = second->next;
+	second->prev = first->prev;
+	first->prev = second;
+	second->next = first;
+	*stack = second;
 }
-
 
 void do_sa(t_stack **stack_a)
 {
 	swap(stack_a);
-	ft_printf("sb\n");
+	ft_printf("sa\n");
 }
 
 void do_sb(t_stack **stack_b)

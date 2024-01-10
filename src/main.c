@@ -127,17 +127,28 @@ int	main(int argc, char **argv)
 
     stack_b = NULL;
 	stack_a = init_stack(argc, argv);
-    ft_printf("Antes do push\n");
+    // ft_printf("Antes do push\n");
+    // ft_printf("===================\n");
+    // print_stack(stack_a);
+    // ft_printf("===================\n");
+    // ft_printf("Depois do push\n");
+    // ft_printf("===================\n");
+    
+    // push(&stack_a, &stack_b);
+
+    // push(&stack_a, &stack_b);
+    // push(&stack_a, &stack_b);
+
+
+
+    ft_printf("Antes do swap\n");
     ft_printf("===================\n");
     print_stack(stack_a);
     ft_printf("===================\n");
-    ft_printf("Depois do push\n");
+    ft_printf("Depois do swap\n");
     ft_printf("===================\n");
-    
-    push(&stack_a, &stack_b);
-    push(&stack_a, &stack_b);
-    push(&stack_a, &stack_b);
 
+    swap(&stack_a);
     ft_printf("Stack a\n");
     ft_printf("===================\n");
     print_stack(stack_a);
@@ -146,22 +157,5 @@ int	main(int argc, char **argv)
     ft_printf("===================\n");
     print_stack(stack_b);
 
-    ft_printf("===================\n");
-    ft_printf("De volta pra stack a\n");
-    ft_printf("===================\n");
-    push(&stack_b, &stack_a);
-    push(&stack_b, &stack_a);
-    push(&stack_b, &stack_a);
-
-    ft_printf("Stack a\n");
-    ft_printf("===================\n");
-    print_stack(stack_a);
-    ft_printf("===================\n");
-    ft_printf("Stack b\n");
-    ft_printf("===================\n");
-    print_stack(stack_b);
-
-    
-    // ft_printf("%d\n", get_stack_size(stack_a));
 
 }
