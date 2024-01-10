@@ -1,16 +1,19 @@
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
-SRC = src/*.c
-LIBFT = libft/libft.a 
+SRC = $(addprefix src/, main.c push.c rotate.c swap.c clear_error.c validate.c)
+LIBFT = libft/libft.a
 
-$(NAME): all
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME) -I includes
+OBJ = $(SRC:.c=.o)
 
-all:
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -I includes
+
+all: $(LIBFT) $(NAME)
 	@make -C libft --no-print-directory
 
 clean:
 	@make clean -C libft --no-print-directory
+	rm -f $(OBJ)
 
 re: fclean all
 

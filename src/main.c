@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/push_swap.h"
-
-#include <stdbool.h>
-
 
 t_stack	*get_stack_last(t_stack *stack)
 {
@@ -22,7 +18,6 @@ t_stack	*get_stack_last(t_stack *stack)
 		stack = (t_stack *)stack->next;
 	return (stack);
 }
-
 
 t_stack	*ft_stack_new(int content)
 {
@@ -51,7 +46,6 @@ void	add_back(t_stack **stack, t_stack *stack_new)
     stack_new->prev = tail;
 }
 
-
 // Ignore essa função por enquanto...
 void print_stack(t_stack *stack_a)
 {
@@ -64,46 +58,48 @@ void print_stack(t_stack *stack_a)
     }
 }
 
-
-t_stack     *init_stack(int argc, char **argv)
+t_stack     *init_stack_splited(char **argv)
 {
-    if(argc < 2)
+    t_stack *stack_a;
+    int i;
+    int el;
+    i = 0;
+    char **temp;
+    temp = ft_split(argv[1], ' ');
+    while (temp[i])
     {
-        ft_printf("Error");
-    }
-	int i = 1;
-	int el;
-	t_stack *stack_a;
-
-	while (i < argc)
-	{
-		el = ft_atoi(argv[i]);
-        if(i == 1)
-            stack_a = ft_stack_new(el);
-        else
-		    add_back(&stack_a, ft_stack_new(el));
+        el = ft_atoi(temp[i]);
+		add_back(&stack_a, ft_stack_new(el));
 		i++;
-	}
+    }
+    ft_freestr(temp);
+    free(temp);
     return(stack_a);
 }
 
 
-bool is_ordened(t_stack *stack_a)
+t_stack     *init_stack(int argc, char **argv)
 {
-    t_stack *temp;
-    temp = stack_a;
-    if (stack_a == NULL || stack_a->next == NULL)
-        return true;
-    while(temp->next != NULL)
+	int i;
+    i = 1;
+	int el;
+	t_stack *stack_a;
+    stack_a = NULL;
+    if(argc < 2)
+        ft_error("Erro2");
+    if(argc == 2)
+        stack_a = init_stack_splited(argv);
+    else
     {
-        if(temp->value > temp->next->value)
-            return(false);
-        temp = temp->next;
+	    while (i < argc)
+	    {
+		    el = ft_atoi(argv[i]);
+		    add_back(&stack_a, ft_stack_new(el));
+		    i++;
+	    }
     }
-    return(true);
+    return(stack_a);
 }
-
-
 
 int get_stack_size(t_stack *stack)
 {
@@ -124,9 +120,13 @@ int	main(int argc, char **argv)
 {
     t_stack *stack_a;
     t_stack *stack_b;
-
     stack_b = NULL;
 	stack_a = init_stack(argc, argv);
+    if(have_duplicates(stack_a))
+    {
+        free_stack(&stack_a);
+        ft_error("Erro1");
+    }
     // ft_printf("Antes do push\n");
     // ft_printf("===================\n");
     // print_stack(stack_a);
@@ -140,15 +140,15 @@ int	main(int argc, char **argv)
     // push(&stack_a, &stack_b);
 
 
-
     ft_printf("Antes do swap\n");
     ft_printf("===================\n");
     print_stack(stack_a);
     ft_printf("===================\n");
-    ft_printf("Depois do swap\n");
+    ft_printf("Depois do swap e push\n");
     ft_printf("===================\n");
 
     swap(&stack_a);
+    push(&stack_a, &stack_b);
     ft_printf("Stack a\n");
     ft_printf("===================\n");
     print_stack(stack_a);
@@ -156,6 +156,7 @@ int	main(int argc, char **argv)
     ft_printf("Stack b\n");
     ft_printf("===================\n");
     print_stack(stack_b);
-
+    free_stack(&stack_a);
 
 }
+
