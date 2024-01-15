@@ -14,28 +14,36 @@
 
 void    rotate(t_stack **stack)
 {
-    t_stack *cur;
-    cur = *stack;
-    while(cur->next != NULL)
-        cur = cur->next;
-    cur->next->prev = NULL;
-    cur->prev = NULL;
-    cur->next = *stack;
-    (*stack)->prev = cur;
-    *stack = cur;
+    if (!*stack || !(*stack)->next)
+        return;
+    t_stack *first;
+    t_stack *new_last;
+    first = *stack;
+    new_last = *stack;
+    while (new_last->next != NULL)
+        new_last = new_last->next;
+    *stack = first->next;
+    (*stack)->prev = NULL;
+
+    new_last->next = first;
+    first->prev = new_last;
+    first->next = NULL;
 }
 
-void reverse_rotate(t_stack **stack)
+void do_ra(t_push *push_swap)
 {
-    t_stack *cur;
-    t_stack *new_next;
-    cur = *stack;
-    new_next = (*stack)->next;
-    while(cur->next != NULL)
-        cur = cur->next;
-    cur->next = *stack;
-    (*stack)->prev = cur;
-    (*stack)->next->prev = NULL;
-    (*stack)->next = NULL;
-    *stack = new_next;
+	rotate(&push_swap->stack_a);
+	ft_printf("ra\n");
+}
+void do_rb(t_push *push_swap)
+{
+	rotate(&push_swap->stack_b);
+	ft_printf("rb\n");
+}
+
+void do_rr(t_push *push_swap)
+{
+	rotate(&push_swap->stack_a);
+	rotate(&push_swap->stack_b);
+	ft_printf("rr\n");
 }

@@ -22,7 +22,7 @@ t_stack	*get_stack_last(t_stack *stack)
 t_stack	*ft_stack_new(int content)
 {
 	t_stack *node;
-	node = malloc(sizeof(t_stack));
+	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
 		ft_printf("Erro");
 	node->value = content;
@@ -98,8 +98,12 @@ t_push *init_all(int argc, char **argv)
     push_swap->argv = argv;
     push_swap->stack_a = NULL;
     push_swap->stack_b = NULL;
+    push_swap->is_splited = false;
     if(argc == 2)
+    {
         push_swap->argv = ft_split(argv[1], ' ');
+        push_swap->is_splited = true;
+    }
     else
         push_swap->argv = ++argv;
     return(push_swap);
@@ -117,40 +121,56 @@ int	main(int argc, char **argv)
         free_stack(&push_swap->stack_a);
         ft_error("Erro1");
     }
-    ft_printf("Antes do push\n");
+    ft_printf("Init a and b\n");
     ft_printf("===================\n");
     print_stack(push_swap->stack_a);
     ft_printf("===================\n");
-    ft_printf("Depois do push\n");
+    ft_printf("Exec ");
+    do_sa(push_swap);
     ft_printf("===================\n");
-    
-    push(&push_swap->stack_a, &push_swap->stack_b);
+    print_stack(push_swap->stack_a);
 
-    push(&push_swap->stack_a, &push_swap->stack_b);
-    push(&push_swap->stack_a, &push_swap->stack_b);
-
-    ft_printf("Antes do swap\n");
+    ft_printf("===================\n");
+    ft_printf("Exec ");
+    do_pb(push_swap);
+    do_pb(push_swap);
+    do_pb(push_swap);
+    ft_printf("===================\n");
+    ft_printf("Stack A\n");
     ft_printf("===================\n");
     print_stack(push_swap->stack_a);
     ft_printf("===================\n");
-    ft_printf("Depois do swap e push\n");
-    ft_printf("===================\n");
-
-    swap(&push_swap->stack_a);
-    push(&push_swap->stack_a, &push_swap->stack_b);
-    push(&push_swap->stack_b, &push_swap->stack_a);
-    push(&push_swap->stack_b, &push_swap->stack_a);
-    push(&push_swap->stack_b, &push_swap->stack_a);
-    swap(&push_swap->stack_a);
-
-    ft_printf("Stack a\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_a);
-    ft_printf("===================\n");
-    ft_printf("Stack b\n");
+    ft_printf("Stack B\n");
     ft_printf("===================\n");
     print_stack(push_swap->stack_b);
-    free_stack(&push_swap->stack_a);
+
+    ft_printf("===================\n");
+    ft_printf("Exec ");
+    do_ra(push_swap);
+    do_rb(push_swap);
+    ft_printf("===================\n");
+    ft_printf("Stack A\n");
+    ft_printf("===================\n");
+    print_stack(push_swap->stack_a);
+    ft_printf("===================\n");
+    ft_printf("Stack B\n");
+    ft_printf("===================\n");
+    print_stack(push_swap->stack_b);
+
+    ft_printf("===================\n");
+    ft_printf("Exec ");
+    do_rra(push_swap);
+    do_rrb(push_swap);
+    ft_printf("===================\n");
+    ft_printf("Stack A\n");
+    ft_printf("===================\n");
+    print_stack(push_swap->stack_a);
+    ft_printf("===================\n");
+    ft_printf("Stack B\n");
+    ft_printf("===================\n");
+    print_stack(push_swap->stack_b);
+
+    ft_finish(push_swap);
 
 }
 

@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 17:53:23 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/10 11:55:59 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:13:21 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	push(t_stack **src, t_stack **dest)
 
 void do_pa(t_push *push_swap)
 {
-	push(&push_swap->stack_a, &push_swap->stack_b);
+	push(&push_swap->stack_b, &push_swap->stack_a);
 	ft_printf("pa\n");
 }
 
 void do_pb(t_push *push_swap)
 {
-	push(&push_swap->stack_b, &push_swap->stack_a);
+	push(&push_swap->stack_a, &push_swap->stack_b);
 	ft_printf("pb\n");
 }

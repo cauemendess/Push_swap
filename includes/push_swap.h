@@ -33,6 +33,7 @@ typedef struct s_push
 	t_stack *stack_b;
 	int argc;
 	char **argv;
+	bool is_splited;
 } t_push;
 
 void	add_back(t_stack **stack, t_stack *new);
@@ -47,12 +48,25 @@ void	do_sa(t_push *push_swap);
 void	do_sb(t_push *push_swap);
 void	do_ss(t_push *push_swap);
 
+void	rotate(t_stack **stack);
+void 	do_ra(t_push *push_swap);
+void 	do_rb(t_push *push_swap);
+void 	do_rr(t_push *push_swap);
+
+void	reverse_rotate(t_stack **stack);
+void do_rra(t_push *push_swap);
+void do_rrb(t_push *push_swap);
+void do_rrr(t_push *push_swap);
+
 t_stack	*ft_stack_new(int content);
 bool	is_ordened(t_stack *stack);
 bool	have_duplicates(t_stack *stack);
 void	ft_error(char *message);
 void	free_stack(t_stack **stack);
 void	ft_freestr(char **str);
+void	ft_finish(t_push *push_swap);
+
+
 
 
 #endif

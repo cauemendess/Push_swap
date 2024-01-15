@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:29:29 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/10 15:40:44 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:24:47 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 void	free_stack(t_stack **stack)
 {
-	t_stack *cur;
-	cur = *stack;
-	t_stack *next;
-	while(cur != NULL)
+	t_stack	*temp;
+
+	if (stack != NULL)
 	{
-		next = cur->next;
-		free(cur);
-		cur = next;
+		while (*stack)
+		{
+			temp = *stack;
+			*stack = (*stack)->next;
+			free(temp);
+		}
+		*stack = NULL;
 	}
-	*stack = NULL;
 }
 
 
 void	ft_finish(t_push *push_swap)
 {
-	if(push_swap->stack_a != NULL)
+	if(push_swap->stack_a)
 		free_stack(&push_swap->stack_a);
-	if(push_swap->argv != NULL)
+	if(push_swap->stack_a)
+		free_stack(&push_swap->stack_b);
+	if(push_swap->argv != NULL && push_swap->is_splited == true)
 		ft_freestr(push_swap->argv);
 	free(push_swap);
 	exit(0);
@@ -46,14 +50,13 @@ void	ft_error(char *message)
 void	ft_freestr(char **str)
 {
 	
-	if (!str)
-		return ;
-	int i;
-	i = 0;
-	while (str[i])
+	size_t	index;
+
+	index = 0;
+	while (str[index] != NULL)
 	{
-		i++;
-		free(str[i]);
+		free(str[index]);
+		index++;
 	}
 	free(str);
 }
