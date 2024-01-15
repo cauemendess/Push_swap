@@ -29,22 +29,22 @@ void swap(t_stack **stack)
 	*stack = second;
 }
 
-void do_sa(t_stack **stack_a)
+void do_sa(t_push *push_swap)
 {
-	swap(stack_a);
+	swap(&push_swap->stack_a);
 	ft_printf("sa\n");
 }
 
-void do_sb(t_stack **stack_b)
+void do_sb(t_push *push_swap)
 {
-	swap(stack_b);
+	swap(&push_swap->stack_b);
 	ft_printf("sb\n");
 }
 
-void do_ss(t_stack **stack_a, t_stack **stack_b)
+void do_ss(t_push *push_swap)
 {
-	swap(stack_a);
-	swap(stack_b);
+	swap(&push_swap->stack_a);
+	swap(&push_swap->stack_b);
 	ft_printf("ss\n");
 }
 

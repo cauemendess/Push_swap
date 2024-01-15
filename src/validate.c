@@ -48,4 +48,15 @@ bool have_duplicates(t_stack *stack)
 	return(false);
 }
 
-
+bool is_numbers(t_push *push_swap)
+{
+	int i;
+	i = 0;
+	while(push_swap->argv[i])
+	{
+		if(!ft_isdigit(push_swap->argv[i]))
+			return(false);
+		i++;
+	}
+	return(true);
+}

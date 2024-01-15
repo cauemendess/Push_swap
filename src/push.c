@@ -33,14 +33,14 @@ void	push(t_stack **src, t_stack **dest)
 	*dest = top;
 }
 
-void do_pa(t_stack **stack_a, t_stack **stack_b)
+void do_pa(t_push *push_swap)
 {
-	push(stack_a, stack_b);
+	push(&push_swap->stack_a, &push_swap->stack_b);
 	ft_printf("pa\n");
 }
 
-void do_pb(t_stack **stack_a, t_stack **stack_b)
+void do_pb(t_push *push_swap)
 {
-	push(stack_b, stack_a);
+	push(&push_swap->stack_b, &push_swap->stack_a);
 	ft_printf("pb\n");
 }

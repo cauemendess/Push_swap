@@ -58,47 +58,22 @@ void print_stack(t_stack *stack_a)
     }
 }
 
-t_stack     *init_stack_splited(char **argv)
+void    init_stack(t_push* push_swap)
 {
-    t_stack *stack_a;
-    int i;
-    int el;
-    i = 0;
-    char **temp;
-    temp = ft_split(argv[1], ' ');
-    while (temp[i])
+    if(push_swap->argc < 2)
     {
-        el = ft_atoi(temp[i]);
-		add_back(&stack_a, ft_stack_new(el));
-		i++;
-    }
-    ft_freestr(temp);
-    free(temp);
-    return(stack_a);
-}
-
-
-t_stack     *init_stack(int argc, char **argv)
-{
-	int i;
-    i = 1;
-	int el;
-	t_stack *stack_a;
-    stack_a = NULL;
-    if(argc < 2)
         ft_error("Erro2");
-    if(argc == 2)
-        stack_a = init_stack_splited(argv);
-    else
-    {
-	    while (i < argc)
-	    {
-		    el = ft_atoi(argv[i]);
-		    add_back(&stack_a, ft_stack_new(el));
-		    i++;
-	    }
     }
-    return(stack_a);
+	int i;
+    i = 0;
+	int el;
+    
+	while (push_swap->argv[i])
+	{
+	    el = ft_atoi(push_swap->argv[i]);
+		add_back(&push_swap->stack_a, ft_stack_new(el));
+		i++;
+	}
 }
 
 int get_stack_size(t_stack *stack)
@@ -115,48 +90,67 @@ int get_stack_size(t_stack *stack)
 }
 
 
+t_push *init_all(int argc, char **argv)
+{
+    t_push *push_swap;
+    push_swap = malloc(sizeof(t_push));
+    push_swap->argc = argc;
+    push_swap->argv = argv;
+    push_swap->stack_a = NULL;
+    push_swap->stack_b = NULL;
+    if(argc == 2)
+        push_swap->argv = ft_split(argv[1], ' ');
+    else
+        push_swap->argv = ++argv;
+    return(push_swap);
+}
+
+
 
 int	main(int argc, char **argv)
 {
-    t_stack *stack_a;
-    t_stack *stack_b;
-    stack_b = NULL;
-	stack_a = init_stack(argc, argv);
-    if(have_duplicates(stack_a))
+    t_push *push_swap;
+    push_swap = init_all(argc, argv);
+    init_stack(push_swap);
+    if(have_duplicates(push_swap->stack_a))
     {
-        free_stack(&stack_a);
+        free_stack(&push_swap->stack_a);
         ft_error("Erro1");
     }
-    // ft_printf("Antes do push\n");
-    // ft_printf("===================\n");
-    // print_stack(stack_a);
-    // ft_printf("===================\n");
-    // ft_printf("Depois do push\n");
-    // ft_printf("===================\n");
+    ft_printf("Antes do push\n");
+    ft_printf("===================\n");
+    print_stack(push_swap->stack_a);
+    ft_printf("===================\n");
+    ft_printf("Depois do push\n");
+    ft_printf("===================\n");
     
-    // push(&stack_a, &stack_b);
+    push(&push_swap->stack_a, &push_swap->stack_b);
 
-    // push(&stack_a, &stack_b);
-    // push(&stack_a, &stack_b);
-
+    push(&push_swap->stack_a, &push_swap->stack_b);
+    push(&push_swap->stack_a, &push_swap->stack_b);
 
     ft_printf("Antes do swap\n");
     ft_printf("===================\n");
-    print_stack(stack_a);
+    print_stack(push_swap->stack_a);
     ft_printf("===================\n");
     ft_printf("Depois do swap e push\n");
     ft_printf("===================\n");
 
-    swap(&stack_a);
-    push(&stack_a, &stack_b);
+    swap(&push_swap->stack_a);
+    push(&push_swap->stack_a, &push_swap->stack_b);
+    push(&push_swap->stack_b, &push_swap->stack_a);
+    push(&push_swap->stack_b, &push_swap->stack_a);
+    push(&push_swap->stack_b, &push_swap->stack_a);
+    swap(&push_swap->stack_a);
+
     ft_printf("Stack a\n");
     ft_printf("===================\n");
-    print_stack(stack_a);
+    print_stack(push_swap->stack_a);
     ft_printf("===================\n");
     ft_printf("Stack b\n");
     ft_printf("===================\n");
-    print_stack(stack_b);
-    free_stack(&stack_a);
+    print_stack(push_swap->stack_b);
+    free_stack(&push_swap->stack_a);
 
 }
 

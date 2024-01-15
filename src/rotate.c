@@ -12,12 +12,30 @@
 
 #include "../includes/push_swap.h"
 
-// void    rotate(t_stack *stack)
-// {
-    
-// }
+void    rotate(t_stack **stack)
+{
+    t_stack *cur;
+    cur = *stack;
+    while(cur->next != NULL)
+        cur = cur->next;
+    cur->next->prev = NULL;
+    cur->prev = NULL;
+    cur->next = *stack;
+    (*stack)->prev = cur;
+    *stack = cur;
+}
 
-// void reverse_rotate(t_stack *stack)
-// {
-
-// }
+void reverse_rotate(t_stack **stack)
+{
+    t_stack *cur;
+    t_stack *new_next;
+    cur = *stack;
+    new_next = (*stack)->next;
+    while(cur->next != NULL)
+        cur = cur->next;
+    cur->next = *stack;
+    (*stack)->prev = cur;
+    (*stack)->next->prev = NULL;
+    (*stack)->next = NULL;
+    *stack = new_next;
+}

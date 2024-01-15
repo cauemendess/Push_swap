@@ -29,8 +29,8 @@ typedef struct s_stack
 
 typedef struct s_push
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack *stack_a;
+	t_stack *stack_b;
 	int argc;
 	char **argv;
 } t_push;
@@ -39,13 +39,13 @@ void	add_back(t_stack **stack, t_stack *new);
 t_push	*init_all(int argc, char **argv);
 
 void	push(t_stack **src, t_stack **dest);
-void	do_pa(t_stack **stack_a, t_stack **stack_b);
-void	do_pb(t_stack **stack_b, t_stack **stack_a);
+void	do_pa(t_push *push_swap);
+void	do_pb(t_push *push_swap);
 
 void	swap(t_stack **stack);
-void	do_sa(t_stack **stack_a);
-void	do_sb(t_stack **stack_b);
-void	do_ss(t_stack **stack_a, t_stack **stack_b);
+void	do_sa(t_push *push_swap);
+void	do_sb(t_push *push_swap);
+void	do_ss(t_push *push_swap);
 
 t_stack	*ft_stack_new(int content);
 bool	is_ordened(t_stack *stack);

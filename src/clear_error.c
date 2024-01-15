@@ -26,6 +26,18 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
+
+void	ft_finish(t_push *push_swap)
+{
+	if(push_swap->stack_a != NULL)
+		free_stack(&push_swap->stack_a);
+	if(push_swap->argv != NULL)
+		ft_freestr(push_swap->argv);
+	free(push_swap);
+	exit(0);
+}
+
+
 void	ft_error(char *message)
 {
 	ft_printf("%s\n", message);
@@ -33,15 +45,15 @@ void	ft_error(char *message)
 }
 void	ft_freestr(char **str)
 {
-	char	*n1;
-
+	
 	if (!str)
 		return ;
-	while (*str)
+	int i;
+	i = 0;
+	while (str[i])
 	{
-		n1 = *str;
-		str++;
-		free(n1);
+		i++;
+		free(str[i]);
 	}
-	*str = NULL;
+	free(str);
 }
