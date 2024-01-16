@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:00:01 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/10 14:00:01 by csilva-m         ###   ########.fr       */
+/*   Created: 2024/01/16 15:47:12 by csilva-m          #+#    #+#             */
+/*   Updated: 2024/01/16 15:47:12 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include "../libft/libft.h"
 # include <stdbool.h>
-# include <stdio.h>
+# include <stdio.h> 
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -34,6 +34,8 @@ typedef struct s_push
 	int argc;
 	char **argv;
 	bool is_splited;
+	long size_a;
+	long size_b;
 } t_push;
 
 void	add_back(t_stack **stack, t_stack *new);
@@ -49,15 +51,19 @@ void	do_sb(t_push *push_swap);
 void	do_ss(t_push *push_swap);
 
 void	rotate(t_stack **stack);
-void 	do_ra(t_push *push_swap);
-void 	do_rb(t_push *push_swap);
-void 	do_rr(t_push *push_swap);
+void	do_ra(t_push *push_swap);
+void	do_rb(t_push *push_swap);
+void	do_rr(t_push *push_swap);
 
 void	reverse_rotate(t_stack **stack);
-void do_rra(t_push *push_swap);
-void do_rrb(t_push *push_swap);
-void do_rrr(t_push *push_swap);
+void	do_rra(t_push *push_swap);
+void	do_rrb(t_push *push_swap);
+void	do_rrr(t_push *push_swap);
 
+
+void	bubble_sort(t_push *push_swap);
+
+int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 bool	is_ordened(t_stack *stack);
 bool	have_duplicates(t_stack *stack);
@@ -65,8 +71,5 @@ void	ft_error(char *message);
 void	free_stack(t_stack **stack);
 void	ft_freestr(char **str);
 void	ft_finish(t_push *push_swap);
-
-
-
 
 #endif

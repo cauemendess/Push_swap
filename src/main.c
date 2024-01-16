@@ -74,6 +74,7 @@ void    init_stack(t_push* push_swap)
 		add_back(&push_swap->stack_a, ft_stack_new(el));
 		i++;
 	}
+    push_swap->size_a = get_stack_size(push_swap->stack_a);
 }
 
 int get_stack_size(t_stack *stack)
@@ -99,6 +100,7 @@ t_push *init_all(int argc, char **argv)
     push_swap->stack_a = NULL;
     push_swap->stack_b = NULL;
     push_swap->is_splited = false;
+    push_swap->size_a = 0;
     if(argc == 2)
     {
         push_swap->argv = ft_split(argv[1], ' ');
@@ -121,54 +123,56 @@ int	main(int argc, char **argv)
         free_stack(&push_swap->stack_a);
         ft_error("Erro1");
     }
-    ft_printf("Init a and b\n");
-    ft_printf("===================\n");
+    bubble_sort(push_swap);
     print_stack(push_swap->stack_a);
-    ft_printf("===================\n");
-    ft_printf("Exec ");
-    do_sa(push_swap);
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_a);
+    //ft_printf("Init a and b\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_a);
+    //ft_printf("===================\n");
+    //ft_printf("Exec ");
+    //do_sa(push_swap);
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_a);
 
-    ft_printf("===================\n");
-    ft_printf("Exec ");
-    do_pb(push_swap);
-    do_pb(push_swap);
-    do_pb(push_swap);
-    ft_printf("===================\n");
-    ft_printf("Stack A\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_a);
-    ft_printf("===================\n");
-    ft_printf("Stack B\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_b);
+    //ft_printf("===================\n");
+    //ft_printf("Exec ");
+    //do_pb(push_swap);
+    //do_pb(push_swap);
+    //do_pb(push_swap);
+    //ft_printf("===================\n");
+    //ft_printf("Stack A\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_a);
+    //ft_printf("===================\n");
+    //ft_printf("Stack B\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_b);
 
-    ft_printf("===================\n");
-    ft_printf("Exec ");
-    do_ra(push_swap);
-    do_rb(push_swap);
-    ft_printf("===================\n");
-    ft_printf("Stack A\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_a);
-    ft_printf("===================\n");
-    ft_printf("Stack B\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_b);
+    //ft_printf("===================\n");
+    //ft_printf("Exec ");
+    //do_ra(push_swap);
+    //do_rb(push_swap);
+    //ft_printf("===================\n");
+    //ft_printf("Stack A\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_a);
+    //ft_printf("===================\n");
+    //ft_printf("Stack B\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_b);
 
-    ft_printf("===================\n");
-    ft_printf("Exec ");
-    do_rra(push_swap);
-    do_rrb(push_swap);
-    ft_printf("===================\n");
-    ft_printf("Stack A\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_a);
-    ft_printf("===================\n");
-    ft_printf("Stack B\n");
-    ft_printf("===================\n");
-    print_stack(push_swap->stack_b);
+    //ft_printf("===================\n");
+    //ft_printf("Exec ");
+    //do_rra(push_swap);
+    //do_rrb(push_swap);
+    //ft_printf("===================\n");
+    //ft_printf("Stack A\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_a);
+    //ft_printf("===================\n");
+    //ft_printf("Stack B\n");
+    //ft_printf("===================\n");
+    //print_stack(push_swap->stack_b);
 
     ft_finish(push_swap);
 

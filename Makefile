@@ -1,6 +1,7 @@
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
-SRC = $(addprefix src/, main.c push.c rotate.c swap.c clear_error.c validate.c reverse_rotate.c)
+SRC = $(addprefix src/, main.c push.c rotate.c swap.c \
+clear_error.c validate.c reverse_rotate.c sort.c)
 LIBFT = libft/libft.a
 
 OBJ = $(SRC:.c=.o)
