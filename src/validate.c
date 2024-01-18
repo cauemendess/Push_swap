@@ -6,57 +6,44 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:54:28 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/15 15:28:16 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:01:08 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool is_ordened(t_stack *stack)
+t_bool is_ordened(t_stack *stack)
 {
     t_stack *temp;
     temp = stack;
     if (stack == NULL || stack->next == NULL)
-        return true;
+        return TRUE;
     while(temp->next != NULL)
     {
         if(temp->value > temp->next->value)
-            return(false);
+            return(FALSE);
         temp = temp->next;
     }
-    return(true);
+    return(TRUE);
 }
 
-bool have_duplicates(t_stack *stack)
+t_bool have_duplicates(t_stack *stack)
 {
 	t_stack *temp;
 	t_stack *runner;
 	temp = stack;
 	if (stack == NULL || stack->next == NULL)
-        return false;
+        return FALSE;
 	while(temp->next != NULL)
 	{
 		runner = temp->next;
 		while(runner->next != NULL)
 		{
 			if(temp->value == runner->value)
-				return(true);
+				return(TRUE);
 			runner = runner->next;
 		}
 		temp = temp->next;
 	}
-	return(false);
+	return(FALSE);
 }
-
-//bool is_numbers(t_push *push_swap)
-//{
-//	int i;
-//	i = 0;
-//	while(push_swap->argv[i])
-//	{
-//		if(!ft_isdigit(push_swap->argv[i]))
-//			return(false);
-//		i++;
-//	}
-//	return(true);
-//}

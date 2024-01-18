@@ -20,9 +20,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
+typedef enum e_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
+
+
 typedef struct s_stack
 {
 	int value;
+	int index;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;
@@ -33,13 +42,17 @@ typedef struct s_push
 	t_stack *stack_b;
 	int argc;
 	char **argv;
-	bool is_splited;
+	t_bool is_splited;
 	long size_a;
 	long size_b;
 } t_push;
 
-void	add_back(t_stack **stack, t_stack *new);
 t_push	*init_all(int argc, char **argv);
+void    init_stack(t_push* push_swap);
+void	add_back(t_stack **stack, t_stack *new);
+t_stack	*get_stack_last(t_stack *stack);
+t_stack	*ft_stack_new(int content);
+int		get_stack_size(t_stack *stack);
 
 void	push(t_stack **src, t_stack **dest);
 void	do_pa(t_push *push_swap);
@@ -61,12 +74,12 @@ void	do_rrb(t_push *push_swap);
 void	do_rrr(t_push *push_swap);
 
 
-void	bubble_sort(t_push *push_swap);
+void	sort_3(t_push *push_swap);
 
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
-bool	is_ordened(t_stack *stack);
-bool	have_duplicates(t_stack *stack);
+t_bool	is_ordened(t_stack *stack);
+t_bool	have_duplicates(t_stack *stack);
 void	ft_error(char *message);
 void	free_stack(t_stack **stack);
 void	ft_freestr(char **str);
