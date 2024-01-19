@@ -75,6 +75,7 @@ void	do_rrr(t_push *push_swap);
 
 
 void	sort_3(t_push *push_swap);
+void	bubble_sort(t_push *push);
 
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
@@ -84,5 +85,7 @@ void	ft_error(char *message);
 void	free_stack(t_stack **stack);
 void	ft_freestr(char **str);
 void	ft_finish(t_push *push_swap);
+
+void    print_stack(t_stack *stack_a);
 
 #endif

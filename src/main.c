@@ -34,10 +34,12 @@ int	main(int argc, char **argv)
         free_stack(&push_swap->stack_a);
         ft_error("Erro1");
     }
-    ft_printf("size stack: %d\n", push_swap->size_a);
+   
     if(push_swap->size_a == 3)
         sort_3(push_swap);
-    print_stack(push_swap->stack_a);
+    else
+        bubble_sort(push_swap);
+    //print_stack(push_swap->stack_a);
 
 
     ft_finish(push_swap);
