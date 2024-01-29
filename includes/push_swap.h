@@ -19,6 +19,7 @@
 # include <stdio.h> 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 
 typedef enum e_bool
@@ -42,6 +43,7 @@ typedef struct s_push
 	t_stack *stack_b;
 	int argc;
 	char **argv;
+	int	*argv_sort;
 	t_bool is_splited;
 	long size_a;
 	long size_b;
@@ -87,5 +89,8 @@ void	ft_freestr(char **str);
 void	ft_finish(t_push *push_swap);
 
 void    print_stack(t_stack *stack_a);
+void    print_argv(t_push *push);
+int    *tab_argv(t_push *push);
+void    assign_index(t_push *push);
 
 #endif

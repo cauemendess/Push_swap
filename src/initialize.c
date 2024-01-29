@@ -8,6 +8,7 @@ t_push		*init_all(int argc, char **argv)
     push_swap->argv = argv;
     push_swap->stack_a = NULL;
     push_swap->stack_b = NULL;
+    push_swap->argv_sort = NULL;
     push_swap->is_splited = FALSE;
     push_swap->size_a = 0;
     if(argc == 2)
@@ -38,4 +39,8 @@ void    init_stack(t_push* push_swap)
 		i++;
 	}
     push_swap->size_a = get_stack_size(push_swap->stack_a);
+    push_swap->argv_sort = tab_argv(push_swap);
 }
+
+
+

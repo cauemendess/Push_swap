@@ -18,7 +18,8 @@ void    print_stack(t_stack *stack_a)
     temp = stack_a;
     while(temp != NULL)
     {
-        ft_printf("value: %d\n", temp->value);
+        ft_printf("value: %d ", temp->value);
+        ft_printf("index: %d\n", temp->index);
         temp = temp->next;
     }
 }
@@ -34,14 +35,11 @@ int	main(int argc, char **argv)
         free_stack(&push_swap->stack_a);
         ft_error("Erro1");
     }
-   
+    assign_index(push_swap);
     if(push_swap->size_a == 3)
         sort_3(push_swap);
-    else
-        bubble_sort(push_swap);
-    //print_stack(push_swap->stack_a);
 
-
+    print_stack(push_swap->stack_a);
     ft_finish(push_swap);
 
 }
