@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:29:29 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/18 17:01:08 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:37:02 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ void	ft_finish(t_push *push_swap)
 		ft_freestr(push_swap->argv);
 	free(push_swap);
 	exit(0);
+}
+
+void	ft_clear_err(char *message, t_push *push_swap)
+{
+	ft_printf("%s\n", message);
+	if(push_swap->stack_a)
+		free_stack(&push_swap->stack_a);
+	if(push_swap->stack_a)
+		free_stack(&push_swap->stack_b);
+	if(push_swap->argv != NULL && push_swap->is_splited == TRUE)
+		ft_freestr(push_swap->argv);
+	free(push_swap);
+	exit(1);
 }
 
 

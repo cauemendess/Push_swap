@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:54:28 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/18 17:01:08 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:41:43 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,31 @@ t_bool have_duplicates(t_stack *stack)
 		temp = temp->next;
 	}
 	return(FALSE);
+}
+t_bool is_numbers(t_push *push)
+{
+	int i = 0;
+	int j;
+	while(i < push->argc - 1)
+	{
+		j = 0;
+		if(push->argv[i][j] == '+' || push->argv[i][j] == '-')
+			j++;
+		while(push->argv[i][j])
+		{
+			if(!ft_isdigit(push->argv[i][j]))
+				return(FALSE);
+			j++;
+		}
+		i++;
+	}
+	return(TRUE);
+}
+
+void validate(t_push *push)
+{
+	if(have_duplicates(push->stack_a))
+		ft_clear_err("Error", push);
+	if(!is_numbers(push))
+		ft_clear_err("Error", push);
 }

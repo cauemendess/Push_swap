@@ -10,24 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <limits.h>
 # include <stdbool.h>
-# include <stdio.h> 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-
 
 typedef enum e_bool
 {
 	FALSE,
 	TRUE
-}	t_bool;
-
+} t_bool;
 
 typedef struct s_stack
 {
@@ -43,18 +40,18 @@ typedef struct s_push
 	t_stack *stack_b;
 	int argc;
 	char **argv;
-	int	*argv_sort;
+	int *argv_sort;
 	t_bool is_splited;
 	long size_a;
 	long size_b;
 } t_push;
 
 t_push	*init_all(int argc, char **argv);
-void    init_stack(t_push* push_swap);
+void	init_stack(t_push *push_swap);
 void	add_back(t_stack **stack, t_stack *new);
 t_stack	*get_stack_last(t_stack *stack);
 t_stack	*ft_stack_new(int content);
-int		get_stack_size(t_stack *stack);
+int	get_stack_size(t_stack *stack);
 
 void	push(t_stack **src, t_stack **dest);
 void	do_pa(t_push *push_swap);
@@ -75,22 +72,25 @@ void	do_rra(t_push *push_swap);
 void	do_rrb(t_push *push_swap);
 void	do_rrr(t_push *push_swap);
 
-
 void	sort_3(t_push *push_swap);
+void	insertion_sort(t_push *push);
 void	bubble_sort(t_push *push);
 
-int		get_stack_size(t_stack *stack);
+int	get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 t_bool	is_ordened(t_stack *stack);
 t_bool	have_duplicates(t_stack *stack);
-void	ft_error(char *message);
 void	free_stack(t_stack **stack);
 void	ft_freestr(char **str);
+void	ft_error(char *message);
+void	ft_clear_err(char *message, t_push *push_swap);
 void	ft_finish(t_push *push_swap);
 
-void    print_stack(t_stack *stack_a);
-void    print_argv(t_push *push);
-int    *tab_argv(t_push *push);
-void    assign_index(t_push *push);
+void	print_stack(t_stack *stack_a);
+void	print_argv(t_push *push);
+int	*tab_argv(t_push *push);
+void	assign_index(t_push *push);
+void	validate(t_push *push);
+t_stack	*find_max_node(t_stack *stack);
 
 #endif

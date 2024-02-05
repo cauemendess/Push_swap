@@ -30,15 +30,12 @@ int	main(int argc, char **argv)
     t_push *push_swap;
     push_swap = init_all(argc, argv);
     init_stack(push_swap);
-    if(have_duplicates(push_swap->stack_a))
-    {
-        free_stack(&push_swap->stack_a);
-        ft_error("Erro1");
-    }
+    validate(push_swap);
     assign_index(push_swap);
     if(push_swap->size_a == 3)
         sort_3(push_swap);
-
+    else
+        insertion_sort(push_swap);
     print_stack(push_swap->stack_a);
     ft_finish(push_swap);
 
