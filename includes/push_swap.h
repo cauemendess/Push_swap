@@ -30,6 +30,7 @@ typedef struct s_stack
 {
 	int value;
 	int index;
+	int position;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;
@@ -86,6 +87,7 @@ void	ft_error(char *message);
 void	ft_clear_err(char *message, t_push *push_swap);
 void	ft_finish(t_push *push_swap);
 
+void	push_all_b(t_push *push, t_stack **stack_a);
 void	print_stack(t_stack *stack_a);
 void	print_argv(t_push *push);
 int	*tab_argv(t_push *push);

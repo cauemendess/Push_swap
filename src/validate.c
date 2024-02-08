@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:54:28 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/05 16:41:43 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:43:06 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool have_duplicates(t_stack *stack)
 	while(temp->next != NULL)
 	{
 		runner = temp->next;
-		while(runner->next != NULL)
+		while(runner)
 		{
 			if(temp->value == runner->value)
 				return(TRUE);
