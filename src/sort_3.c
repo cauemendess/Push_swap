@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:42:03 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/18 16:49:38 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:51:00 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack *find_max_node(t_stack *stack)
 	max_node = cur;
     while (cur != NULL)
     {
-        if (cur->value > max_node->value)
+        if (cur->index > max_node->index)
             max_node = cur;
         cur = cur->next;
     }
@@ -34,10 +34,10 @@ void	sort_3(t_push *push_swap)
 	high = find_max_node(push_swap->stack_a);
 	if(is_ordened(push_swap->stack_a))
 		return;
-	if(push_swap->stack_a->value == high->value)
+	if(push_swap->stack_a->index == high->index)
 		do_ra(push_swap);
-	else if(push_swap->stack_a->next->value == high->value)
+	else if(push_swap->stack_a->next->index == high->index)
 		do_rra(push_swap);
-	if(push_swap->stack_a->value > push_swap->stack_a->next->value)
+	if(push_swap->stack_a->index > push_swap->stack_a->next->index)
 		do_sa(push_swap);
 }

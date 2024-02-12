@@ -19,7 +19,9 @@ void    print_stack(t_stack *stack_a)
     while(temp != NULL)
     {
         ft_printf("value: %d ", temp->value);
+        ft_printf("position: %d ", temp->position);
         ft_printf("index: %d\n", temp->index);
+
         temp = temp->next;
     }
 }
@@ -33,9 +35,16 @@ int	main(int argc, char **argv)
     assign_index(push_swap);
     validate(push_swap);
     if(push_swap->size_a == 3)
+    {
         sort_3(push_swap);
+    }
     else
-        push_all_b(push_swap, &push_swap->stack_a);
+        sort(push_swap, &push_swap->stack_a, &push_swap->stack_b);
+    ft_printf("================\n");
+    print_stack(push_swap->stack_a);
+    ft_printf("================\n");
+    print_stack(push_swap->stack_b);
+
 
     ft_finish(push_swap);
 

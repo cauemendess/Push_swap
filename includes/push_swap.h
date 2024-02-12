@@ -31,6 +31,9 @@ typedef struct s_stack
 	int value;
 	int index;
 	int position;
+	int	target;
+	int	cost_a;
+	int	cost_b;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;
@@ -74,6 +77,7 @@ void	do_rrb(t_push *push_swap);
 void	do_rrr(t_push *push_swap);
 
 void	sort_3(t_push *push_swap);
+void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
 void	insertion_sort(t_push *push);
 void	bubble_sort(t_push *push);
 

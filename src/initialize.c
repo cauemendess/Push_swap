@@ -22,11 +22,11 @@ t_push		*init_all(int argc, char **argv)
 }
 
 
-void    init_stack(t_push* push_swap)
+void    init_stack(t_push *push_swap)
 {
     if(push_swap->argc < 2)
     {
-        ft_error("Erro2");
+        ft_error("ErroY");
     }
 	int i;
     i = 0;
@@ -41,6 +41,4 @@ void    init_stack(t_push* push_swap)
     push_swap->size_a = get_stack_size(push_swap->stack_a);
     push_swap->argv_sort = tab_argv(push_swap);
 }
-
-
 

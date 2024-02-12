@@ -2,7 +2,7 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror -g
 SRC = $(addprefix src/, main.c push.c rotate.c swap.c \
 clear_error.c validate.c reverse_rotate.c sort_3.c sort.c assign_index.c \
-stack_utils.c initialize.c)
+stack_utils.c initialize.c move.c)
 LIBFT = libft/libft.a
 
 OBJ = $(SRC:.c=.o)
