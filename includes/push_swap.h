@@ -80,8 +80,10 @@ void	sort_3(t_push *push_swap);
 void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
 void	insertion_sort(t_push *push);
 void	bubble_sort(t_push *push);
+void	do_move(t_push *push, int cost_a, int cost_b);
 
-int	get_stack_size(t_stack *stack);
+
+int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 t_bool	is_ordened(t_stack *stack);
 t_bool	have_duplicates(t_stack *stack);

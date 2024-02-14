@@ -22,7 +22,7 @@ void    assign_index(t_push *push)
 	free(push->argv_sort);
 }
 
-void sort_tab(int *tab, int size)
+void	sort_tab(int *tab, int size)
 {
 	int	i;
 	int	tmp;
