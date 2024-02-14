@@ -30,10 +30,6 @@ typedef struct s_stack
 {
 	int value;
 	int index;
-	int position;
-	int	target;
-	int	cost_a;
-	int	cost_b;
 	struct s_stack *next;
 	struct s_stack *prev;
 } t_stack;
@@ -55,7 +51,7 @@ void	init_stack(t_push *push_swap);
 void	add_back(t_stack **stack, t_stack *new);
 t_stack	*get_stack_last(t_stack *stack);
 t_stack	*ft_stack_new(int content);
-int	get_stack_size(t_stack *stack);
+int		get_stack_size(t_stack *stack);
 
 void	push(t_stack **src, t_stack **dest);
 void	do_pa(t_push *push_swap);
@@ -78,11 +74,13 @@ void	do_rrr(t_push *push_swap);
 
 void	sort_3(t_push *push_swap);
 void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
-void	insertion_sort(t_push *push);
-void	bubble_sort(t_push *push);
 void	do_move(t_push *push, int cost_a, int cost_b);
+void	move_a(t_push *push, int *cost);
+void	move_b(t_push *push, int *cost);
+void	move_both(t_push *push, int *cost_a, int *cost_b);
+void	do_cheapest_move(t_push *push);
 
-
+void	radix(t_push *push, t_stack **stack_a, t_stack **stack_b, int bits);
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 t_bool	is_ordened(t_stack *stack);
@@ -96,9 +94,10 @@ void	ft_finish(t_push *push_swap);
 void	push_all_b(t_push *push, t_stack **stack_a);
 void	print_stack(t_stack *stack_a);
 void	print_argv(t_push *push);
-int	*tab_argv(t_push *push);
+int		*tab_argv(t_push *push);
 void	assign_index(t_push *push);
 void	validate(t_push *push);
 t_stack	*find_max_node(t_stack *stack);
+void	small_sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
 
 #endif

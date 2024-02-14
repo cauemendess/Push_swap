@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:29:29 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/05 16:37:02 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:07:10 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_finish(t_push *push_swap)
 
 void	ft_clear_err(char *message, t_push *push_swap)
 {
-	ft_printf("%s\n", message);
+	ft_putendl_fd(message, 2);
 	if(push_swap->stack_a)
 		free_stack(&push_swap->stack_a);
 	if(push_swap->stack_a)
@@ -57,7 +57,7 @@ void	ft_clear_err(char *message, t_push *push_swap)
 
 void	ft_error(char *message)
 {
-	ft_printf("%s\n", message);
+	ft_putendl_fd(message, 2);
 	exit(1);
 }
 void	ft_freestr(char **str)
