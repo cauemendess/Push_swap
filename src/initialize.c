@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/15 17:37:46 by csilva-m          #+#    #+#             */
+/*   Updated: 2024/02/15 17:37:47 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 long	ft_atol(const char *nptr)
@@ -10,9 +22,7 @@ long	ft_atol(const char *nptr)
 	i = 0;
 	sig = 1;
 	while ((nptr[i] == 32) || ((nptr[i] >= 9) && (nptr[i] <= 13)))
-	{
 		i++;
-	}
 	if ((nptr[i] == '-') || (nptr[i] == '+'))
 	{
 		if (nptr[i] == '-')
@@ -35,6 +45,7 @@ t_push	*init_all(int argc, char **argv)
 	push_swap = malloc(sizeof(t_push));
 	push_swap->argc = argc;
 	push_swap->argv = argv;
+	push_swap->bits = count_bits(argc);
 	push_swap->stack_a = NULL;
 	push_swap->stack_b = NULL;
 	push_swap->argv_sort = NULL;

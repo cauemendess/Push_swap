@@ -6,21 +6,22 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:33 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/08 17:27:17 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:36:15 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void swap(t_stack **stack)
+void	swap(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *second;
-	if(!*stack || !(*stack)->next)
-		return;
+	t_stack	*first;
+	t_stack	*second;
+
+	if (!*stack || !(*stack)->next)
+		return ;
 	first = *stack;
 	second = (*stack)->next;
-	if(second->next != NULL)
+	if (second->next != NULL)
 		second->next->prev = first;
 	first->next = second->next;
 	second->prev = first->prev;
@@ -29,22 +30,21 @@ void swap(t_stack **stack)
 	*stack = second;
 }
 
-void do_sa(t_push *push_swap)
+void	do_sa(t_push *push_swap)
 {
 	swap(&push_swap->stack_a);
 	ft_printf("sa\n");
 }
 
-void do_sb(t_push *push_swap)
+void	do_sb(t_push *push_swap)
 {
 	swap(&push_swap->stack_b);
 	ft_printf("sb\n");
 }
 
-void do_ss(t_push *push_swap)
+void	do_ss(t_push *push_swap)
 {
 	swap(&push_swap->stack_a);
 	swap(&push_swap->stack_b);
 	ft_printf("ss\n");
 }
-

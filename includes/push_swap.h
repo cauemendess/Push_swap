@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 15:47:12 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/01/16 15:47:12 by csilva-m         ###   ########.fr       */
+/*   Created: 2024/02/15 18:03:42 by csilva-m          #+#    #+#             */
+/*   Updated: 2024/02/15 18:03:42 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ typedef enum e_bool
 {
 	FALSE,
 	TRUE
-} t_bool;
+}	t_bool;
 
 typedef struct s_stack
 {
-	int value;
-	int index;
-	struct s_stack *next;
-	struct s_stack *prev;
-} t_stack;
+	int		value;
+	int		index;
+	struct  s_stack	*next;
+	struct  s_stack	*prev;
+}	t_stack;
 
 typedef struct s_push
 {
@@ -44,7 +44,8 @@ typedef struct s_push
 	t_bool is_splited;
 	long size_a;
 	long size_b;
-} t_push;
+	int bits;
+}	t_push;
 
 t_push	*init_all(int argc, char **argv);
 void	init_stack(t_push *push_swap);
@@ -73,14 +74,8 @@ void	do_rrb(t_push *push_swap);
 void	do_rrr(t_push *push_swap);
 
 void	sort_3(t_push *push_swap);
-void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
-void	do_move(t_push *push, int cost_a, int cost_b);
-void	move_a(t_push *push, int *cost);
-void	move_b(t_push *push, int *cost);
-void	move_both(t_push *push, int *cost_a, int *cost_b);
-void	do_cheapest_move(t_push *push);
-
 void	radix(t_push *push, t_stack **stack_a, t_stack **stack_b, int bits);
+
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 t_bool	is_ordened(t_stack *stack);
@@ -99,5 +94,6 @@ void	assign_index(t_push *push);
 void	validate(t_push *push);
 t_stack	*find_max_node(t_stack *stack);
 void	small_sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
+int		count_bits(int max);
 
 #endif

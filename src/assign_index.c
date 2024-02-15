@@ -1,17 +1,29 @@
-# include "../includes/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   assign_index.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/15 17:37:39 by csilva-m          #+#    #+#             */
+/*   Updated: 2024/02/15 17:37:40 by csilva-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    assign_index(t_push *push)
+#include "../includes/push_swap.h"
+
+void	assign_index(t_push *push)
 {
-    t_stack *stack;
-	stack = push->stack_a;
-	int index;
+	t_stack	*stack;
+	int		index;
 
-	while(stack)
+	stack = push->stack_a;
+	while (stack)
 	{
 		index = 0;
-		while(index < push->size_a)
-		{	
-			if(stack->value == push->argv_sort[index])
+		while (index < push->size_a)
+		{
+			if (stack->value == push->argv_sort[index])
 			{
 				stack->index = index;
 			}
@@ -46,17 +58,18 @@ void	sort_tab(int *tab, int size)
 	}
 }
 
-int    *tab_argv(t_push *push)
+int	*tab_argv(t_push *push)
 {
-    int i;
-    i = 0;
-	int *res;
-    res = malloc(sizeof(int) * push->size_a);
-    while(push->argv[i])
-    {
-        res[i] = ft_atoi(push->argv[i]);
-        i++;
-    }
+	int	i;
+	int	*res;
+
+	i = 0;
+	res = malloc(sizeof(int) * push->size_a);
+	while (push->argv[i])
+	{
+		res[i] = ft_atoi(push->argv[i]);
+		i++;
+	}
 	sort_tab(res, push->size_a);
-	return(res);
+	return (res);
 }
