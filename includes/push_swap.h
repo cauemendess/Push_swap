@@ -26,30 +26,31 @@ typedef enum e_bool
 	TRUE
 }	t_bool;
 
-typedef struct s_stack
+typedef struct s_stack	t_stack;
+struct s_stack
 {
 	int		value;
 	int		index;
-	struct  s_stack	*next;
-	struct  s_stack	*prev;
-}	t_stack;
+	t_stack	*next;
+	t_stack	*prev;
+};
 
 typedef struct s_push
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	int argc;
-	char **argv;
-	int *argv_sort;
-	t_bool is_splited;
-	long size_a;
-	long size_b;
-	int bits;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		argc;
+	char	**argv;
+	int		*argv_sort;
+	t_bool	is_splited;
+	long	size_a;
+	long	size_b;
+	int		bits;
 }	t_push;
 
 t_push	*init_all(int argc, char **argv);
 void	init_stack(t_push *push_swap);
-void	add_back(t_stack **stack, t_stack *new);
+void	add_back(t_stack **stack, t_stack *stack_new);
 t_stack	*get_stack_last(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 int		get_stack_size(t_stack *stack);
@@ -86,9 +87,7 @@ void	ft_error(char *message);
 void	ft_clear_err(char *message, t_push *push_swap);
 void	ft_finish(t_push *push_swap);
 
-void	push_all_b(t_push *push, t_stack **stack_a);
 void	print_stack(t_stack *stack_a);
-void	print_argv(t_push *push);
 int		*tab_argv(t_push *push);
 void	assign_index(t_push *push);
 void	validate(t_push *push);
