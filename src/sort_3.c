@@ -6,11 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 15:42:03 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/15 17:35:48 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:26:00 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 t_stack	*find_max_node(t_stack *stack)
 {

@@ -6,11 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:37:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/16 11:28:10 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:25:23 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 long	ft_atol(const char *nptr)
 {

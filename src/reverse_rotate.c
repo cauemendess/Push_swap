@@ -6,11 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:15:37 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/15 17:48:13 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:25:42 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	reverse_rotate(t_stack **stack)
 {

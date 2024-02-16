@@ -6,11 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:54:28 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/15 17:39:42 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:26:32 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 t_bool	is_ordened(t_stack *stack)
 {

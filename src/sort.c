@@ -6,11 +6,11 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:38:17 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/15 17:38:18 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:26:05 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	push_back(t_push *push, t_stack **stack_b)
 {
