@@ -25,23 +25,13 @@ void	print_stack(t_stack *stack_a)
 	}
 }
 
-int	count_bits(int max)
-{
-	int	count;
-
-	count = 0;
-	while (max != 0)
-	{
-		max = max >> 1;
-		count++;
-	}
-	return (count);
-}
-
 void	push_swap(t_push *push)
 {
 	if (push->size_a == 2)
+	{
 		do_sa(push);
+		ft_finish(push);
+	}
 	if (push->size_a == 3)
 		sort_3(push);
 	else if (push->size_a < 50 && push->size_a > 3)

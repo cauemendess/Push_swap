@@ -1,4 +1,6 @@
 NAME = push_swap
+NAME_BONUS = checker
+
 CFLAGS = -Wall -Wextra -Werror -g -O3
 SRC_DIR = src
 SRC = $(addprefix src/, main.c push.c rotate.c swap.c \
@@ -9,6 +11,12 @@ LIBFT = libft/libft.a
 INC_DIR = -I./includes -I./$(SRC_DIR)
 OBJ = $(SRC:.c=.o)
 
+all: $(OBJ) $(LIBFT) $(NAME)
+
+bonus: $(OBJ_BONUS) $(LIBFT) $(NAME_BONUS)
+
+$(LIBFT):
+	@make -C ./libft --no-print-directory
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
@@ -16,14 +24,14 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC_DIR) -c $< -o $@
 
-all: $(LIBFT) $(NAME)
-	@make -C libft --no-print-directory
-
 clean:
-	@make clean -C libft --no-print-directory
+	@make clean -C ./libft --no-print-directory
 	rm -f $(OBJ)
 
 re: fclean all
 
 fclean: clean
 	rm -f $(NAME)
+	@make fclean -C libft --no-print-directory
+
+.PHONY: all clean fclean re libft

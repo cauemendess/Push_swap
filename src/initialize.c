@@ -6,11 +6,24 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:37:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/16 18:25:23 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:24:34 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	count_bits(int max)
+{
+	int	count;
+
+	count = 0;
+	while (max != 0)
+	{
+		max = max >> 1;
+		count++;
+	}
+	return (count);
+}
 
 long	ft_atol(const char *nptr)
 {
