@@ -1,6 +1,6 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror -g3 -O0
 HEADER = libft.h
 
 OBJ_PATH = ./bin/

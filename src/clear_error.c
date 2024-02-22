@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:29:29 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/16 18:25:17 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:07:49 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_clear_err(char *message, t_push *push_swap)
 	ft_putendl_fd(message, 2);
 	if (push_swap->stack_a)
 		free_stack(&push_swap->stack_a);
-	if (push_swap->stack_a)
+	if (push_swap->stack_b)
 		free_stack(&push_swap->stack_b);
 	if (push_swap->argv != NULL && push_swap->is_splited == TRUE)
 		ft_freestr(push_swap->argv);

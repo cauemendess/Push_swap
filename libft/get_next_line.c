@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 10:47:55 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/10/12 18:45:21 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:01:17 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,11 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(buffer);
+		buffer = NULL;
 		return (NULL);
+	}
 	buffer = ft_read(fd, buffer);
 	if (!buffer)
 		return (NULL);

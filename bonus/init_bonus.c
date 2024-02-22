@@ -1,29 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 17:37:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/22 11:46:33 by csilva-m         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "push_swap.h"
-
-int	count_bits(int max)
-{
-	int	count;
-
-	count = 0;
-	while (max != 0)
-	{
-		max = max >> 1;
-		count++;
-	}
-	return (count);
-}
+#include "checker_bonus.h"
 
 long	ft_atol(const char *nptr)
 {
@@ -58,7 +33,6 @@ t_push	*init_all(int argc, char **argv)
 	push_swap = ft_calloc(1, sizeof(t_push));
 	push_swap->argc = argc;
 	push_swap->argv = argv;
-	push_swap->bits = count_bits(argc);
 	push_swap->is_splited = FALSE;
 	push_swap->size_a = 0;
 	if (argc == 2)
@@ -89,5 +63,4 @@ void	init_stack(t_push *push_swap)
 		i++;
 	}
 	push_swap->size_a = get_stack_size(push_swap->stack_a);
-	push_swap->argv_sort = tab_argv(push_swap);
 }

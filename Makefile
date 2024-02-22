@@ -13,7 +13,9 @@ stack_utils.c initialize.c small_sort.c)
 
 OBJ = $(addprefix $(BIN), $(notdir $(SRC:.c=.o)))
 
-SRC_BONUS = $(addprefix bonus/, checker_bonus.c)
+SRC_BONUS = $(addprefix bonus/, checker_bonus.c clear_err_bonus.c init_bonus.c \
+push_bonus.c reverse_rotate_bonus.c rotate_bonus.c stack_utils_bonus.c swap_bonus.c \
+validate_bonus.c)
 
 OBJ_BONUS = $(addprefix $(BIN), $(notdir $(SRC_BONUS:.c=.o)))
 
