@@ -1,37 +1,57 @@
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -O3
+
 NAME = push_swap
 NAME_BONUS = checker
 
-CFLAGS = -Wall -Wextra -Werror -g -O3
-SRC_DIR = src
+BIN = ./bin/
+INC_DIR = ./includes/
+
 SRC = $(addprefix src/, main.c push.c rotate.c swap.c \
 clear_error.c validate.c reverse_rotate.c sort_3.c sort.c assign_index.c \
 stack_utils.c initialize.c small_sort.c)
+
+OBJ = $(addprefix $(BIN), $(notdir $(SRC:.c=.o)))
+
+SRC_BONUS = $(addprefix bonus/, checker_bonus.c)
+
+OBJ_BONUS = $(addprefix $(BIN), $(notdir $(SRC_BONUS:.c=.o)))
+
 LIBFT = libft/libft.a
 
-INC_DIR = -I./includes -I./$(SRC_DIR)
-OBJ = $(SRC:.c=.o)
+all: $(BIN) $(OBJ) $(LIBFT) $(NAME)
 
-all: $(OBJ) $(LIBFT) $(NAME)
-
-bonus: $(OBJ_BONUS) $(LIBFT) $(NAME_BONUS)
+bonus: $(BIN) $(OBJ_BONUS) $(LIBFT) $(NAME_BONUS)
 
 $(LIBFT):
 	@make -C ./libft --no-print-directory
 
+$(BIN):
+	@mkdir -p $(BIN)
+
+$(BIN)%.o: src/%.c $(INC_DIR)push_swap.h | $(BIN)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
+
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INC_DIR) -c $< -o $@
+
+$(BIN)%.o: bonus/%.c $(INC_DIR)checker_bonus.h | $(BIN)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
+
+$(NAME_BONUS): $(OBJ_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
 clean:
 	@make clean -C ./libft --no-print-directory
-	rm -f $(OBJ)
+	rm -rf $(BIN)
 
 re: fclean all
 
 fclean: clean
 	rm -f $(NAME)
+	rm -rf $(NAME_BONUS)
 	@make fclean -C libft --no-print-directory
 
 .PHONY: all clean fclean re libft
+

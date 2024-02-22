@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "checker_bonus.h"
 
 int main(void)
 {
