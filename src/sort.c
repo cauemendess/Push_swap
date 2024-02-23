@@ -6,47 +6,77 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:38:17 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/19 10:50:22 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/23 18:25:59 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_back(t_push *push, t_stack **stack_b)
-{
-	unsigned int	index;
-	unsigned int	len_b;
 
-	index = 0;
-	len_b = get_stack_size(*stack_b);
-	while (index < len_b)
+
+void	push_all_b(t_push *push, t_stack **stack_a)
+{
+	int i;
+	i = 0;
+
+	int stack_size;
+	stack_size = get_stack_size(*stack_a) / 2;
+	while(get_stack_size(*stack_a) > stack_size)
 	{
-		do_pa(push);
-		index++;
+		if((*stack_a)->index < stack_size)
+			do_pb(push);
+		else
+			do_ra(push);
+		i++;
+	}
+
+	while(get_stack_size(*stack_a) > 3)
+		do_pb(push);
+	sort_3(push);
+}
+
+void	get_positon(t_stack **stack)
+{
+	t_stack *temp;
+	int	i;
+	i = 0;
+	temp = *stack;
+	while(temp)
+	{
+		temp->pos = i;
+		temp = temp->next;
+		i++;
 	}
 }
 
-void	radix(t_push *push, t_stack **stack_a, t_stack **stack_b, int bits)
-{
-	int				i;
-	unsigned int	index;
-	unsigned int	len_a;
+//int	get_target(t_stack **stack_a)
+//{
 
-	i = 0;
-	len_a = get_stack_size(*stack_a);
-	while (i < bits)
-	{
-		index = 0;
-		while (index < len_a)
-		{
-			if (((*stack_a)->index >> i) % 2 == 1)
-				do_ra(push);
-			else
-				do_pb(push);
-			index++;
-			(*stack_a) = (*stack_a);
-		}
-		push_back(push, stack_b);
-		i++;
-	}
+//}
+
+//void	get_target_pos(t_stack **stack_a, t_stack **stack_b)
+//{
+//	int target;
+//	t_stack *temp;
+	
+//	get_positon(stack_a);
+//	get_positon(stack_b);
+//	temp = *stack_b;
+//	target = 0;
+//	while(temp)
+//	{
+//		target = get_target(stack_a);
+//	}
+	
+//}
+
+
+void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b)
+{
+	(void)stack_b;
+	push_all_b(push, stack_a);
+	get_positon(stack_a);
+	get_positon(stack_b);
+	get_target_pos(stack_a, stack_b);
+	
 }

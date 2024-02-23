@@ -29,6 +29,10 @@ struct s_stack
 {
 	int		value;
 	int		index;
+	int		pos;
+	int		target_pos;
+	int 	cost_a;
+	int 	cost_b;
 	t_stack	*next;
 	t_stack	*prev;
 };
@@ -43,7 +47,6 @@ typedef struct s_push
 	t_bool	is_splited;
 	long	size_a;
 	long	size_b;
-	int		bits;
 }	t_push;
 
 t_push	*init_all(int argc, char **argv);
@@ -73,7 +76,7 @@ void	do_rrb(t_push *push_swap);
 void	do_rrr(t_push *push_swap);
 
 void	sort_3(t_push *push_swap);
-void	radix(t_push *push, t_stack **stack_a, t_stack **stack_b, int bits);
+
 
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
@@ -91,6 +94,6 @@ void	assign_index(t_push *push);
 void	validate(t_push *push);
 t_stack	*find_max_node(t_stack *stack);
 void	small_sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
-int		count_bits(int max);
+void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
 
 #endif

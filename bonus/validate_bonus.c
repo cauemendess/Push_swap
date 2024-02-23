@@ -51,7 +51,11 @@ t_bool	is_numbers(t_push *push)
 		if (!push->argv[i])
 			return (FALSE);
 		if (push->argv[i][j] == '+' || push->argv[i][j] == '-')
+		{
 			j++;
+			if (!ft_isdigit(push->argv[i][j]))
+				return (FALSE);
+		}
 		while (push->argv[i][j])
 		{
 			if (!ft_isdigit(push->argv[i][j]))

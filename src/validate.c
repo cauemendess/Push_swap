@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:54:28 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/22 18:13:11 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:18:59 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ t_bool	is_numbers(t_push *push)
 		if (!push->argv[i])
 			return (FALSE);
 		if (push->argv[i][j] == '+' || push->argv[i][j] == '-')
+		{
 			j++;
+			if (!ft_isdigit(push->argv[i][j]))
+				return (FALSE);
+		}
 		while (push->argv[i][j])
 		{
 			if (!ft_isdigit(push->argv[i][j]))

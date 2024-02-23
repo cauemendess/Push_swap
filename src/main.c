@@ -20,7 +20,8 @@ void	print_stack(t_stack *stack_a)
 	while (temp != NULL)
 	{
 		ft_printf("value: %d ", temp->value);
-		ft_printf("index: %d\n", temp->index);
+		ft_printf("index: %d ", temp->index);
+		ft_printf("pos: %d\n", temp->pos);
 		temp = temp->next;
 	}
 }
@@ -30,14 +31,14 @@ void	push_swap(t_push *push)
 	if (push->size_a == 2)
 	{
 		do_sa(push);
-		ft_finish(push);
+		return ;
 	}
 	if (push->size_a == 3)
 		sort_3(push);
 	else if (push->size_a < 50 && push->size_a > 3)
 		small_sort(push, &push->stack_a, &push->stack_b);
 	else
-		radix(push, &push->stack_a, &push->stack_b, push->bits);
+		sort(push, &push->stack_a, &push->stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -48,7 +49,11 @@ int	main(int argc, char **argv)
 	init_stack(push);
 	assign_index(push);
 	validate(push);
+	ft_printf("====================================\n");
 	if (!is_ordened(push->stack_a))
 		push_swap(push);
+	ft_printf("====================================\n");
+	print_stack(push->stack_b);
+
 	ft_finish(push);
 }
