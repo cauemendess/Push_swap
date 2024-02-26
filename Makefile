@@ -9,7 +9,7 @@ INC_DIR = ./includes/
 
 SRC = $(addprefix src/, main.c push.c rotate.c swap.c \
 clear_error.c validate.c reverse_rotate.c sort_3.c sort.c assign_index.c \
-stack_utils.c initialize.c small_sort.c)
+stack_utils.c initialize.c small_sort.c target_pos.c set_cost.c moves.c)
 
 OBJ = $(addprefix $(BIN), $(notdir $(SRC:.c=.o)))
 

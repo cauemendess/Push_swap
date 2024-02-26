@@ -19,9 +19,8 @@ void	print_stack(t_stack *stack_a)
 	temp = stack_a;
 	while (temp != NULL)
 	{
-		ft_printf("value: %d ", temp->value);
 		ft_printf("index: %d ", temp->index);
-		ft_printf("pos: %d\n", temp->pos);
+		ft_printf("target_pos: %d\n", temp->target_pos);
 		temp = temp->next;
 	}
 }
@@ -49,11 +48,7 @@ int	main(int argc, char **argv)
 	init_stack(push);
 	assign_index(push);
 	validate(push);
-	ft_printf("====================================\n");
 	if (!is_ordened(push->stack_a))
 		push_swap(push);
-	ft_printf("====================================\n");
-	print_stack(push->stack_b);
-
 	ft_finish(push);
 }

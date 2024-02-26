@@ -31,8 +31,8 @@ struct s_stack
 	int		index;
 	int		pos;
 	int		target_pos;
-	int 	cost_a;
-	int 	cost_b;
+	int		cost_a;
+	int		cost_b;
 	t_stack	*next;
 	t_stack	*prev;
 };
@@ -77,7 +77,6 @@ void	do_rrr(t_push *push_swap);
 
 void	sort_3(t_push *push_swap);
 
-
 int		get_stack_size(t_stack *stack);
 t_stack	*ft_stack_new(int content);
 t_bool	is_ordened(t_stack *stack);
@@ -95,5 +94,20 @@ void	validate(t_push *push);
 t_stack	*find_max_node(t_stack *stack);
 void	small_sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
 void	sort(t_push *push, t_stack **stack_a, t_stack **stack_b);
+
+void	get_target_pos(t_stack **stack_a, t_stack **stack_b);
+
+int		get_target(t_stack **stack_a, int target, \
+int b_index, int target_index);
+
+void	get_positon(t_stack **stack);
+
+void	get_cost(t_stack **stack_a, t_stack **stack_b);
+
+void	do_cheapest(t_push *push, t_stack **stack_b);
+void	do_move(t_push *push, int cost_a, int cost_b);
+void	move_a(t_push *push, int *cost_a);
+void	move_b(t_push *push, int *cost_b);
+void	move_both(t_push *push, int *cost_a, int *cost_b);
 
 #endif
