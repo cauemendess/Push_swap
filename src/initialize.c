@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:37:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2024/02/23 17:42:34 by csilva-m         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:05:54 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_stack(t_push *push_swap)
 
 	i = 0;
 	if (push_swap->argc < 2)
-		ft_error("Error");
+		return ;
 	while (push_swap->argv[i])
 	{
 		if (ft_atol(push_swap->argv[i]) > INT_MAX
